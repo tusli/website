@@ -34,11 +34,24 @@ export default function AdminPage() {
         // If user is logged in but not admin, isAdmin remains false,
         // and the component will render the permission error.
       } catch (error) {
-        // User is not logged in or session expired, redirect to login page.
-        // After successful login, they will be redirected back to this Admin page.
-        console.error("Error fetching user, initiating login redirect:", error);
-        await User.loginWithRedirect(window.location.href);
-        return; // Stop further execution until redirection completes
+        // Check if this is an expected 401 authentication error
+        const isAuthError = error.message && (
+          error.message.includes('401') || 
+          error.message.includes('You cannot view other users without being logged in')
+        );
+        
+        if (isAuthError) {
+          // User is not logged in or session expired, redirect to login page.
+          // After successful login, they will be redirected back to this Admin page.
+          console.info("User not authenticated, initiating login redirect");
+          await User.loginWithRedirect(window.location.href);
+          return; // Stop further execution until redirection completes
+        } else {
+          // Unexpected error, log as error
+          console.error("Unexpected error fetching user:", error);
+          await User.loginWithRedirect(window.location.href);
+          return;
+        }
       } finally {
         setIsLoading(false); // Always set loading to false once check is done
       }
