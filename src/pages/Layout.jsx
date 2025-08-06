@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"; // Added Sheet components
 import { motion, AnimatePresence } from "framer-motion";
-import TimedContactPopup from "./components/shared/TimedContactPopup";
+import TimedContactPopup from "@/components/shared/TimedContactPopup";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();

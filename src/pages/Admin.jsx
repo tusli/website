@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { User } from '@/api/entities';
 import { Deal } from '@/api/entities';
 import { Inquiry } from '@/api/entities';
-import { BlogPost } from '@/api/entities/BlogPost';
+import { SimpleBlogPost } from '@/api/entities';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LogOut, Settings, Package, MessageSquare, FileText, PlusCircle, List, Shield } from 'lucide-react';

@@ -1,9 +1,7 @@
-
-
-
-export function createPageUrl(pageName: string) {
-    return '/' + pageName.toLowerCase().replace(/ /g, '-');
+export function createPageUrl(pageName) {
+    return `/${pageName}`;
 }
-export function hyphenToCamelCase(str: string): string {
+
+export function hyphenToCamelCase(str) {
     return str.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
 }
